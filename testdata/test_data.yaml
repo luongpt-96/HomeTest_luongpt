@@ -1,0 +1,11 @@
+tv_data_Search:
+  44_55_inchs: '44%20-%2055%20inches'
+  32_43_inchs: '32%20-%2043%20inches'  
+lang_unit: 'inches'
+screen_size_title: 'Screen Size Group (inches)'
+result_text:  'Results for "{text}"'
+screen_size:
+  s_44_55_inchs: '44%20-%2055%20inches'
+  s_32_43_inchs: '32%20-%2043%20inches'
+store: 'en'
+

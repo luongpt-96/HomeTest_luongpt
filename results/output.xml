@@ -1,0 +1,1831 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.2.1 (Python 3.9.5 on linux)" generated="20210709 09:58:28.909" rpa="false">
+<suite id="s1" name="Testcases" source="/home/chitq/WorkingSpace/SelfTask/RobotPractice/testcases">
+<suite id="s1-s1" name="Add Product And Check" source="/home/chitq/WorkingSpace/SelfTask/RobotPractice/testcases/add_product_and_check.robot">
+<test id="s1-s1-t1" name="Add products then checking shopping cart">
+<kw name="Open browser to page" library="common_keywords">
+<arguments>
+<arg>${pb_url}</arg>
+</arguments>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+</arguments>
+<assign>
+<var>${options}</var>
+</assign>
+<msg timestamp="20210709 09:58:29.174" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x7f5342f8e9d0&gt;</msg>
+<status status="PASS" starttime="20210709 09:58:29.174" endtime="20210709 09:58:29.174"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>"fasp"=True</arg>
+</arguments>
+<assign>
+<var>${exclude}</var>
+</assign>
+<msg timestamp="20210709 09:58:29.175" level="INFO">${exclude} = {'"fasp"': 'True'}</msg>
+<status status="PASS" starttime="20210709 09:58:29.175" endtime="20210709 09:58:29.175"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>protocol_handler.excluded_schemes=${exclude}</arg>
+</arguments>
+<assign>
+<var>${prefs}</var>
+</assign>
+<msg timestamp="20210709 09:58:29.175" level="INFO">${prefs} = {'protocol_handler.excluded_schemes': {'"fasp"': 'True'}}</msg>
+<status status="PASS" starttime="20210709 09:58:29.175" endtime="20210709 09:58:29.175"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--disable-infobars</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:58:29.175" endtime="20210709 09:58:29.175"></status>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<arguments>
+<arg>${options}</arg>
+<arg>add_experimental_option</arg>
+<arg>prefs</arg>
+<arg>${prefs}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:58:29.176" endtime="20210709 09:58:29.176"></status>
+</kw>
+<kw name="Create Webdriver" library="SeleniumLibrary">
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<arguments>
+<arg>Chrome</arg>
+<arg>chrome_options=${options}</arg>
+</arguments>
+<msg timestamp="20210709 09:58:29.176" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20210709 09:58:29.176" endtime="20210709 09:58:30.425"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20210709 09:58:30.425" endtime="20210709 09:58:30.533"></status>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<arguments>
+<arg>${speed}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:58:30.534" endtime="20210709 09:58:30.534"></status>
+</kw>
+<kw name="Go To" library="SeleniumLibrary">
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<msg timestamp="20210709 09:58:30.535" level="INFO">Opening url 'https://www.powerbuy.co.th/en'</msg>
+<status status="PASS" starttime="20210709 09:58:30.534" endtime="20210709 09:59:17.056"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:58:29.174" endtime="20210709 09:59:17.057"></status>
+</kw>
+<kw name="Search and add product to cart" library="common_keywords">
+<arguments>
+<arg>${search_field}</arg>
+<arg>${type1}</arg>
+</arguments>
+<assign>
+<var>${product_1}</var>
+</assign>
+<kw name="Search products by name and specificcation" library="search_page">
+<arguments>
+<arg>${search_field}</arg>
+<arg>${size}</arg>
+</arguments>
+<kw name="Search desired product by name" library="common_keywords">
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${search_input_box}</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:17.060" level="INFO">Typing text 'TV' into text field 'css:[class='MainHeader__StyledWrapper-fBqfJn igXJea'] #txt-searchBox-input'.</msg>
+<status status="PASS" starttime="20210709 09:59:17.060" endtime="20210709 09:59:17.727"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${search_button}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:17.728" endtime="20210709 09:59:18.024"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:18.024" level="INFO">Clicking element 'css:[class='MainHeader__StyledWrapper-fBqfJn igXJea'] #btn-searchBox-input'.</msg>
+<status status="PASS" starttime="20210709 09:59:18.024" endtime="20210709 09:59:18.795"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:17.727" endtime="20210709 09:59:18.795"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4s</arg>
+</arguments>
+<msg timestamp="20210709 09:59:22.795" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20210709 09:59:18.795" endtime="20210709 09:59:22.795"></status>
+</kw>
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${prod_tag}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:22.796" endtime="20210709 09:59:25.397"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:25.398" endtime="20210709 09:59:25.698"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:22.796" endtime="20210709 09:59:25.698"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${result_text}</arg>
+<arg>text=${name}</arg>
+</arguments>
+<assign>
+<var>${expected_text}</var>
+</assign>
+<msg timestamp="20210709 09:59:25.700" level="INFO">${expected_text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 09:59:25.699" endtime="20210709 09:59:25.700"></status>
+</kw>
+<kw name="Get text and compare value" library="common_keywords">
+<arguments>
+<arg>${search_result_text}</arg>
+<arg>${expected_text}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:25.702" endtime="20210709 09:59:25.979"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 09:59:26.252" level="INFO">${text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 09:59:25.980" endtime="20210709 09:59:26.252"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:26.253" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 09:59:26.253" endtime="20210709 09:59:26.253"></status>
+</kw>
+<msg timestamp="20210709 09:59:26.254" level="INFO">${text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 09:59:25.701" endtime="20210709 09:59:26.254"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${text}' == '${text_value}'</arg>
+<arg>${true}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:26.255" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 09:59:26.254" endtime="20210709 09:59:26.255"></status>
+</kw>
+<msg timestamp="20210709 09:59:26.255" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 09:59:25.700" endtime="20210709 09:59:26.255"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result} == ${true}</arg>
+<arg>BuiltIn.Log</arg>
+<arg>Success to search products by text name</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Fail</arg>
+<arg>Fail to search products by text name</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Success to search products by text name</arg>
+</arguments>
+<msg timestamp="20210709 09:59:26.257" level="INFO">Success to search products by text name</msg>
+<status status="PASS" starttime="20210709 09:59:26.256" endtime="20210709 09:59:26.257"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:26.255" endtime="20210709 09:59:26.257"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:17.058" endtime="20210709 09:59:26.257"></status>
+</kw>
+<kw name="Select filter follow option" library="search_page">
+<arguments>
+<arg>${specificcation}</arg>
+</arguments>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${screen_size_opt}</arg>
+<arg>titile_name=${screen_size_title}</arg>
+</arguments>
+<assign>
+<var>${screen_size_filter}</var>
+</assign>
+<msg timestamp="20210709 09:59:26.259" level="INFO">${screen_size_filter} = css:div[title='Screen Size Group (inches)']</msg>
+<status status="PASS" starttime="20210709 09:59:26.258" endtime="20210709 09:59:26.259"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${opt_size_option}</arg>
+<arg>size_inch=${size}</arg>
+</arguments>
+<assign>
+<var>${opt_locator}</var>
+</assign>
+<msg timestamp="20210709 09:59:26.260" level="INFO">${opt_locator} = xpath://div[contains(@class,'Padding') and text() = '44 - 55 inches']//parent::div[contains(@class,'Col__Column')]//parent::div[contains(@class,'Row__Wrapper')]/div[1]/div[contains(@class,'Checkbox')]</msg>
+<status status="PASS" starttime="20210709 09:59:26.259" endtime="20210709 09:59:26.260"></status>
+</kw>
+<kw name="Scroll To Element" library="common_keywords">
+<arguments>
+<arg>${screen_size_filter}</arg>
+</arguments>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:26.261" endtime="20210709 09:59:26.957"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:26.260" endtime="20210709 09:59:26.957"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${opt_locator}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:26.958" endtime="20210709 09:59:27.228"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:27.228" level="INFO">Clicking element 'xpath://div[contains(@class,'Padding') and text() = '44 - 55 inches']//parent::div[contains(@class,'Col__Column')]//parent::div[contains(@class,'Row__Wrapper')]/div[1]/div[contains(@class,'Checkbox')]'.</msg>
+<status status="PASS" starttime="20210709 09:59:27.228" endtime="20210709 09:59:28.300"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:26.957" endtime="20210709 09:59:28.300"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:26.257" endtime="20210709 09:59:28.301"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5S</arg>
+</arguments>
+<msg timestamp="20210709 09:59:33.302" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210709 09:59:28.301" endtime="20210709 09:59:33.302"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:17.058" endtime="20210709 09:59:33.302"></status>
+</kw>
+<kw name="Click particular product with SKU" library="search_page">
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Get sku from search result" library="search_page">
+<assign>
+<var>${sku}</var>
+</assign>
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${example_locator}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:33.304" endtime="20210709 09:59:33.425"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:33.754" level="INFO">Suppressing StaleElementReferenceException from Selenium.</msg>
+<status status="PASS" starttime="20210709 09:59:33.425" endtime="20210709 09:59:39.959"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:33.303" endtime="20210709 09:59:39.960"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${example_locator}</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.082" level="INFO">${list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="d6eff2093cca5a4e808b043278a7f1b1", element="4cd12da5-e669-443f-b8c9-2b7943846583")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20210709 09:59:39.960" endtime="20210709 09:59:40.082"></status>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<arguments>
+<arg>${list}[1]</arg>
+<arg>data-productid</arg>
+</arguments>
+<assign>
+<var>${sku}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.193" level="INFO">${sku} = 264098</msg>
+<status status="PASS" starttime="20210709 09:59:40.082" endtime="20210709 09:59:40.194"></status>
+</kw>
+<msg timestamp="20210709 09:59:40.194" level="INFO">${sku} = 264098</msg>
+<status status="PASS" starttime="20210709 09:59:33.303" endtime="20210709 09:59:40.194"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${target_product}</arg>
+<arg>sku=${sku}</arg>
+</arguments>
+<assign>
+<var>${prd_locator}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.196" level="INFO">${prd_locator} = css:div[data-productid='264098']</msg>
+<status status="PASS" starttime="20210709 09:59:40.194" endtime="20210709 09:59:40.196"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${target_product_name}</arg>
+<arg>sku=${sku}</arg>
+</arguments>
+<assign>
+<var>${prd_name_locator}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.197" level="INFO">${prd_name_locator} = css:div[data-productid='264098'] a:last-child span</msg>
+<status status="PASS" starttime="20210709 09:59:40.196" endtime="20210709 09:59:40.197"></status>
+</kw>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${prd_name_locator}</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:40.198" endtime="20210709 09:59:40.459"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.737" level="INFO">${text} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 09:59:40.460" endtime="20210709 09:59:40.738"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:40.738" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 09:59:40.738" endtime="20210709 09:59:40.739"></status>
+</kw>
+<msg timestamp="20210709 09:59:40.740" level="INFO">${name} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 09:59:40.197" endtime="20210709 09:59:40.740"></status>
+</kw>
+<kw name="Scroll Down And Wait To Get Available Element" library="common_keywords">
+<arguments>
+<arg>${prd_locator}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${11}</arg>
+</arguments>
+<assign>
+<var>${section}</var>
+</assign>
+<msg timestamp="20210709 09:59:40.742" level="INFO">${section} = 11</msg>
+<status status="PASS" starttime="20210709 09:59:40.741" endtime="20210709 09:59:40.742"></status>
+</kw>
+<kw name="Get Element Size" library="SeleniumLibrary">
+<doc>Returns width and height of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${entire_page}</arg>
+</arguments>
+<assign>
+<var>${page_height}</var>
+</assign>
+<msg timestamp="20210709 09:59:41.162" level="INFO">${page_height} = (1905, 7406)</msg>
+<status status="PASS" starttime="20210709 09:59:40.743" endtime="20210709 09:59:41.162"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${page_height}[1]</arg>
+</arguments>
+<assign>
+<var>${page_height}</var>
+</assign>
+<msg timestamp="20210709 09:59:41.164" level="INFO">${page_height} = 7406</msg>
+<status status="PASS" starttime="20210709 09:59:41.162" endtime="20210709 09:59:41.164"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>'${page_height}/${section}'</arg>
+</arguments>
+<assign>
+<var>${scroll_length}</var>
+</assign>
+<msg timestamp="20210709 09:59:41.165" level="INFO">${scroll_length} = 7406/11</msg>
+<status status="PASS" starttime="20210709 09:59:41.164" endtime="20210709 09:59:41.166"></status>
+</kw>
+<kw name="${index} IN RANGE [ ${section} ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(0,${${scroll_length}*${index}})</arg>
+</arguments>
+<msg timestamp="20210709 09:59:41.169" level="INFO">Executing JavaScript:
+window.scrollTo(0,0.0)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210709 09:59:41.167" endtime="20210709 09:59:41.299"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>SeleniumLibrary.Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:41.301" endtime="20210709 09:59:41.589"></status>
+</kw>
+<msg timestamp="20210709 09:59:41.589" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20210709 09:59:41.300" endtime="20210709 09:59:41.590"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}' == '${true}'</arg>
+</arguments>
+<msg timestamp="20210709 09:59:41.590" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 09:59:41.590" endtime="20210709 09:59:41.591"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:41.166" endtime="20210709 09:59:41.591"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:41.166" endtime="20210709 09:59:41.591"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:40.740" endtime="20210709 09:59:41.591"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2S</arg>
+</arguments>
+<msg timestamp="20210709 09:59:43.592" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20210709 09:59:41.591" endtime="20210709 09:59:43.592"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${prd_name_locator}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:43.594" endtime="20210709 09:59:43.877"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:43.879" level="INFO">Clicking element 'css:div[data-productid='264098'] a:last-child span'.</msg>
+<status status="PASS" starttime="20210709 09:59:43.878" endtime="20210709 09:59:45.372"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:43.593" endtime="20210709 09:59:45.372"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:45.373" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 09:59:45.372" endtime="20210709 09:59:45.373"></status>
+</kw>
+<msg timestamp="20210709 09:59:45.373" level="INFO">${text} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 09:59:33.303" endtime="20210709 09:59:45.373"></status>
+</kw>
+<kw name="Close popup" library="common_keywords">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Switch iframe and click</arg>
+</arguments>
+<kw name="Switch iframe and click" library="common_keywords">
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${iframe_target}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:45.375" endtime="20210709 09:59:47.508"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:47.508" endtime="20210709 09:59:47.732"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:45.374" endtime="20210709 09:59:47.733"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20210709 09:59:52.734" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210709 09:59:47.733" endtime="20210709 09:59:52.734"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>SeleniumLibrary.Select frame</arg>
+<arg>${iframe_target}</arg>
+</arguments>
+<kw name="Select Frame" library="SeleniumLibrary">
+<doc>Sets frame identified by ``locator`` as the current frame.</doc>
+<arguments>
+<arg>${iframe_target}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:52.736" level="INFO">Selecting frame 'css:div[classname="sp-fancybox-wrap sp-fancybox-wrap-2405 sp-advanced-css-2405"] iframe[classname="sp-fancybox-iframe sp-fancybox-skin sp-fancybox-iframe-2405"]'.</msg>
+<status status="PASS" starttime="20210709 09:59:52.735" endtime="20210709 09:59:53.058"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:52.734" endtime="20210709 09:59:53.058"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>SeleniumLibrary.Select frame</arg>
+<arg>${iframe_target}</arg>
+</arguments>
+<kw name="Select Frame" library="SeleniumLibrary">
+<doc>Sets frame identified by ``locator`` as the current frame.</doc>
+<arguments>
+<arg>${iframe_target}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:53.060" level="INFO">Selecting frame 'css:div[classname="sp-fancybox-wrap sp-fancybox-wrap-2405 sp-advanced-css-2405"] iframe[classname="sp-fancybox-iframe sp-fancybox-skin sp-fancybox-iframe-2405"]'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210709 09:59:53.583" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210709 09:59:53.192" endtime="20210709 09:59:53.583"></status>
+</kw>
+<msg timestamp="20210709 09:59:53.584" level="FAIL">Element with locator 'css:div[classname="sp-fancybox-wrap sp-fancybox-wrap-2405 sp-advanced-css-2405"] iframe[classname="sp-fancybox-iframe sp-fancybox-skin sp-fancybox-iframe-2405"]' not found.</msg>
+<status status="FAIL" starttime="20210709 09:59:53.059" endtime="20210709 09:59:53.584"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:53.058" endtime="20210709 09:59:53.584"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Click Element</arg>
+<arg>${close_popup_btn}</arg>
+</arguments>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${close_popup_btn}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:53.585" endtime="20210709 09:59:53.844"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 09:59:53.844" level="INFO">Clicking element 'css:#wrap-close-button-1454703945249'.</msg>
+<status status="PASS" starttime="20210709 09:59:53.844" endtime="20210709 09:59:54.166"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:53.584" endtime="20210709 09:59:54.166"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:53.584" endtime="20210709 09:59:54.166"></status>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>SeleniumLibrary.Click Element At Coordinates</arg>
+<arg>${entire_page}</arg>
+<arg>300</arg>
+<arg>300</arg>
+</arguments>
+<kw name="Click Element At Coordinates" library="SeleniumLibrary">
+<doc>Click the element ``locator`` at ``xoffset/yoffset``.</doc>
+<arguments>
+<arg>${entire_page}</arg>
+<arg>300</arg>
+<arg>300</arg>
+</arguments>
+<msg timestamp="20210709 09:59:54.168" level="INFO">Clicking element 'xpath://body' at coordinates x=300, y=300.</msg>
+<status status="PASS" starttime="20210709 09:59:54.167" endtime="20210709 09:59:55.040"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:54.166" endtime="20210709 09:59:55.041"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:45.374" endtime="20210709 09:59:55.041"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:45.374" endtime="20210709 09:59:55.041"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:45.373" endtime="20210709 09:59:55.041"></status>
+</kw>
+<kw name="Check product name and add to cart" library="prod_detail_page">
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<kw name="Get text and compare value" library="common_keywords">
+<arguments>
+<arg>${product_name_title}</arg>
+<arg>${product_name}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 09:59:55.044" endtime="20210709 10:00:00.509"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:00.751" level="INFO">${text} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 10:00:00.509" endtime="20210709 10:00:00.751"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:00.752" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:00.751" endtime="20210709 10:00:00.752"></status>
+</kw>
+<msg timestamp="20210709 10:00:00.752" level="INFO">${text} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 09:59:55.044" endtime="20210709 10:00:00.752"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${text}' == '${text_value}'</arg>
+<arg>${true}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:00.753" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:00.752" endtime="20210709 10:00:00.753"></status>
+</kw>
+<msg timestamp="20210709 10:00:00.754" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 09:59:55.043" endtime="20210709 10:00:00.754"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result}==${true}</arg>
+<arg>common_keywords.Click Element</arg>
+<arg>${product_add_cart_btn}</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Fail</arg>
+<arg>Not same the expected product, refused!</arg>
+</arguments>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${product_add_cart_btn}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:00.755" endtime="20210709 10:00:00.982"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:00.983" level="INFO">Clicking element 'css:div[class='ProductSummary__StickyBarView-ccTufv bHNIjO'] * button'.</msg>
+<status status="PASS" starttime="20210709 10:00:00.983" endtime="20210709 10:00:01.359"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:00.754" endtime="20210709 10:00:01.359"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:00.754" endtime="20210709 10:00:01.359"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:59:55.042" endtime="20210709 10:00:01.359"></status>
+</kw>
+<msg timestamp="20210709 10:00:01.359" level="INFO">${product_1} = TV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 09:59:17.057" endtime="20210709 10:00:01.359"></status>
+</kw>
+<kw name="Search and add product to cart" library="common_keywords">
+<arguments>
+<arg>${search_field}</arg>
+<arg>${type2}</arg>
+</arguments>
+<assign>
+<var>${product_2}</var>
+</assign>
+<kw name="Search products by name and specificcation" library="search_page">
+<arguments>
+<arg>${search_field}</arg>
+<arg>${size}</arg>
+</arguments>
+<kw name="Search desired product by name" library="common_keywords">
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${search_input_box}</arg>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:01.361" level="INFO">Typing text 'TV' into text field 'css:[class='MainHeader__StyledWrapper-fBqfJn igXJea'] #txt-searchBox-input'.</msg>
+<status status="PASS" starttime="20210709 10:00:01.361" endtime="20210709 10:00:01.840"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${search_button}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:01.840" endtime="20210709 10:00:02.080"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:02.081" level="INFO">Clicking element 'css:[class='MainHeader__StyledWrapper-fBqfJn igXJea'] #btn-searchBox-input'.</msg>
+<status status="PASS" starttime="20210709 10:00:02.081" endtime="20210709 10:00:04.260"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:01.840" endtime="20210709 10:00:04.260"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>4s</arg>
+</arguments>
+<msg timestamp="20210709 10:00:08.261" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20210709 10:00:04.260" endtime="20210709 10:00:08.261"></status>
+</kw>
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${prod_tag}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:08.262" endtime="20210709 10:00:08.417"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:08.418" endtime="20210709 10:00:08.711"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:08.261" endtime="20210709 10:00:08.711"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${result_text}</arg>
+<arg>text=${name}</arg>
+</arguments>
+<assign>
+<var>${expected_text}</var>
+</assign>
+<msg timestamp="20210709 10:00:08.712" level="INFO">${expected_text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 10:00:08.711" endtime="20210709 10:00:08.713"></status>
+</kw>
+<kw name="Get text and compare value" library="common_keywords">
+<arguments>
+<arg>${search_result_text}</arg>
+<arg>${expected_text}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:08.715" endtime="20210709 10:00:09.016"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:09.303" level="INFO">${text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 10:00:09.016" endtime="20210709 10:00:09.303"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:09.304" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:09.303" endtime="20210709 10:00:09.304"></status>
+</kw>
+<msg timestamp="20210709 10:00:09.305" level="INFO">${text} = Results for "TV"</msg>
+<status status="PASS" starttime="20210709 10:00:08.714" endtime="20210709 10:00:09.305"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${text}' == '${text_value}'</arg>
+<arg>${true}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:09.306" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:09.305" endtime="20210709 10:00:09.306"></status>
+</kw>
+<msg timestamp="20210709 10:00:09.307" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 10:00:08.713" endtime="20210709 10:00:09.307"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result} == ${true}</arg>
+<arg>BuiltIn.Log</arg>
+<arg>Success to search products by text name</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Fail</arg>
+<arg>Fail to search products by text name</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Success to search products by text name</arg>
+</arguments>
+<msg timestamp="20210709 10:00:09.309" level="INFO">Success to search products by text name</msg>
+<status status="PASS" starttime="20210709 10:00:09.308" endtime="20210709 10:00:09.309"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:09.307" endtime="20210709 10:00:09.310"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:01.360" endtime="20210709 10:00:09.310"></status>
+</kw>
+<kw name="Select filter follow option" library="search_page">
+<arguments>
+<arg>${specificcation}</arg>
+</arguments>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${screen_size_opt}</arg>
+<arg>titile_name=${screen_size_title}</arg>
+</arguments>
+<assign>
+<var>${screen_size_filter}</var>
+</assign>
+<msg timestamp="20210709 10:00:09.313" level="INFO">${screen_size_filter} = css:div[title='Screen Size Group (inches)']</msg>
+<status status="PASS" starttime="20210709 10:00:09.312" endtime="20210709 10:00:09.313"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${opt_size_option}</arg>
+<arg>size_inch=${size}</arg>
+</arguments>
+<assign>
+<var>${opt_locator}</var>
+</assign>
+<msg timestamp="20210709 10:00:09.314" level="INFO">${opt_locator} = xpath://div[contains(@class,'Padding') and text() = '32 - 43 inches']//parent::div[contains(@class,'Col__Column')]//parent::div[contains(@class,'Row__Wrapper')]/div[1]/div[contains(@class,'Checkbox')]</msg>
+<status status="PASS" starttime="20210709 10:00:09.313" endtime="20210709 10:00:09.315"></status>
+</kw>
+<kw name="Scroll To Element" library="common_keywords">
+<arguments>
+<arg>${screen_size_filter}</arg>
+</arguments>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:09.316" endtime="20210709 10:00:10.278"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:09.315" endtime="20210709 10:00:10.278"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${opt_locator}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:10.279" endtime="20210709 10:00:10.549"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:10.549" level="INFO">Clicking element 'xpath://div[contains(@class,'Padding') and text() = '32 - 43 inches']//parent::div[contains(@class,'Col__Column')]//parent::div[contains(@class,'Row__Wrapper')]/div[1]/div[contains(@class,'Checkbox')]'.</msg>
+<status status="PASS" starttime="20210709 10:00:10.549" endtime="20210709 10:00:11.575"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:10.278" endtime="20210709 10:00:11.575"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:09.311" endtime="20210709 10:00:11.576"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5S</arg>
+</arguments>
+<msg timestamp="20210709 10:00:16.577" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210709 10:00:11.576" endtime="20210709 10:00:16.577"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:01.360" endtime="20210709 10:00:16.578"></status>
+</kw>
+<kw name="Click particular product with SKU" library="search_page">
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Get sku from search result" library="search_page">
+<assign>
+<var>${sku}</var>
+</assign>
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${example_locator}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:16.582" endtime="20210709 10:00:18.478"></status>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:18.478" endtime="20210709 10:00:18.713"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:16.580" endtime="20210709 10:00:18.714"></status>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<arguments>
+<arg>${example_locator}</arg>
+</arguments>
+<assign>
+<var>${list}</var>
+</assign>
+<msg timestamp="20210709 10:00:18.861" level="INFO">${list} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="d6eff2093cca5a4e808b043278a7f1b1", element="a074edf8-d8c7-4da2-9931-284dbf7f9e5d")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (sessi...</msg>
+<status status="PASS" starttime="20210709 10:00:18.714" endtime="20210709 10:00:18.862"></status>
+</kw>
+<kw name="Get Element Attribute" library="SeleniumLibrary">
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<arguments>
+<arg>${list}[1]</arg>
+<arg>data-productid</arg>
+</arguments>
+<assign>
+<var>${sku}</var>
+</assign>
+<msg timestamp="20210709 10:00:18.999" level="INFO">${sku} = 254439</msg>
+<status status="PASS" starttime="20210709 10:00:18.862" endtime="20210709 10:00:18.999"></status>
+</kw>
+<msg timestamp="20210709 10:00:19.000" level="INFO">${sku} = 254439</msg>
+<status status="PASS" starttime="20210709 10:00:16.579" endtime="20210709 10:00:19.000"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${target_product}</arg>
+<arg>sku=${sku}</arg>
+</arguments>
+<assign>
+<var>${prd_locator}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.001" level="INFO">${prd_locator} = css:div[data-productid='254439']</msg>
+<status status="PASS" starttime="20210709 10:00:19.000" endtime="20210709 10:00:19.001"></status>
+</kw>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${target_product_name}</arg>
+<arg>sku=${sku}</arg>
+</arguments>
+<assign>
+<var>${prd_name_locator}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.002" level="INFO">${prd_name_locator} = css:div[data-productid='254439'] a:last-child span</msg>
+<status status="PASS" starttime="20210709 10:00:19.001" endtime="20210709 10:00:19.002"></status>
+</kw>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${prd_name_locator}</arg>
+</arguments>
+<assign>
+<var>${name}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:19.003" endtime="20210709 10:00:19.243"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.499" level="INFO">${text} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:19.243" endtime="20210709 10:00:19.499"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:19.500" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:19.499" endtime="20210709 10:00:19.500"></status>
+</kw>
+<msg timestamp="20210709 10:00:19.501" level="INFO">${name} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:19.002" endtime="20210709 10:00:19.501"></status>
+</kw>
+<kw name="Scroll Down And Wait To Get Available Element" library="common_keywords">
+<arguments>
+<arg>${prd_locator}</arg>
+</arguments>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${11}</arg>
+</arguments>
+<assign>
+<var>${section}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.503" level="INFO">${section} = 11</msg>
+<status status="PASS" starttime="20210709 10:00:19.502" endtime="20210709 10:00:19.503"></status>
+</kw>
+<kw name="Get Element Size" library="SeleniumLibrary">
+<doc>Returns width and height of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${entire_page}</arg>
+</arguments>
+<assign>
+<var>${page_height}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.930" level="INFO">${page_height} = (1905, 7428)</msg>
+<status status="PASS" starttime="20210709 10:00:19.504" endtime="20210709 10:00:19.930"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${page_height}[1]</arg>
+</arguments>
+<assign>
+<var>${page_height}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.932" level="INFO">${page_height} = 7428</msg>
+<status status="PASS" starttime="20210709 10:00:19.931" endtime="20210709 10:00:19.932"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<arguments>
+<arg>'${page_height}/${section}'</arg>
+</arguments>
+<assign>
+<var>${scroll_length}</var>
+</assign>
+<msg timestamp="20210709 10:00:19.934" level="INFO">${scroll_length} = 7428/11</msg>
+<status status="PASS" starttime="20210709 10:00:19.933" endtime="20210709 10:00:19.934"></status>
+</kw>
+<kw name="${index} IN RANGE [ ${section} ]" type="for">
+<kw name="${index} = 0" type="foritem">
+<kw name="Execute Javascript" library="SeleniumLibrary">
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<arguments>
+<arg>window.scrollTo(0,${${scroll_length}*${index}})</arg>
+</arguments>
+<msg timestamp="20210709 10:00:19.937" level="INFO">Executing JavaScript:
+window.scrollTo(0,0.0)
+Without any arguments.</msg>
+<status status="PASS" starttime="20210709 10:00:19.935" endtime="20210709 10:00:20.079"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>SeleniumLibrary.Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=10</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:20.081" endtime="20210709 10:00:20.398"></status>
+</kw>
+<msg timestamp="20210709 10:00:20.399" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20210709 10:00:20.080" endtime="20210709 10:00:20.399"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${status}' == '${true}'</arg>
+</arguments>
+<msg timestamp="20210709 10:00:20.400" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:20.399" endtime="20210709 10:00:20.401"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:19.935" endtime="20210709 10:00:20.401"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:19.934" endtime="20210709 10:00:20.401"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:19.501" endtime="20210709 10:00:20.401"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>2S</arg>
+</arguments>
+<msg timestamp="20210709 10:00:22.402" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20210709 10:00:20.402" endtime="20210709 10:00:22.403"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${prd_name_locator}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:22.405" endtime="20210709 10:00:22.695"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:22.696" level="INFO">Clicking element 'css:div[data-productid='254439'] a:last-child span'.</msg>
+<status status="PASS" starttime="20210709 10:00:22.696" endtime="20210709 10:00:24.469"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:22.403" endtime="20210709 10:00:24.469"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${name}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:24.470" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:24.469" endtime="20210709 10:00:24.470"></status>
+</kw>
+<msg timestamp="20210709 10:00:24.470" level="INFO">${text} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:16.578" endtime="20210709 10:00:24.470"></status>
+</kw>
+<kw name="Close popup" library="common_keywords">
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<arguments>
+<arg>Switch iframe and click</arg>
+</arguments>
+<kw name="Switch iframe and click" library="common_keywords">
+<kw name="Verify Web Element Is Visible" library="common_keywords">
+<arguments>
+<arg>${iframe_target}</arg>
+</arguments>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${GLOBALTIMEOUT}</arg>
+</arguments>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20210709 10:00:39.929" level="INFO" html="yes">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-2.png"&gt;&lt;img src="selenium-screenshot-2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20210709 10:00:39.495" endtime="20210709 10:00:39.930"></status>
+</kw>
+<msg timestamp="20210709 10:00:39.931" level="FAIL">Element 'css:div[classname="sp-fancybox-wrap sp-fancybox-wrap-2405 sp-advanced-css-2405"] iframe[classname="sp-fancybox-iframe sp-fancybox-skin sp-fancybox-iframe-2405"]' did not appear in 15 seconds.</msg>
+<status status="FAIL" starttime="20210709 10:00:24.472" endtime="20210709 10:00:39.931"></status>
+</kw>
+<status status="FAIL" starttime="20210709 10:00:24.472" endtime="20210709 10:00:39.932"></status>
+</kw>
+<status status="FAIL" starttime="20210709 10:00:24.471" endtime="20210709 10:00:39.932"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:24.471" endtime="20210709 10:00:39.932"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:24.470" endtime="20210709 10:00:39.933"></status>
+</kw>
+<kw name="Check product name and add to cart" library="prod_detail_page">
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<kw name="Get text and compare value" library="common_keywords">
+<arguments>
+<arg>${product_name_title}</arg>
+<arg>${product_name}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:39.938" endtime="20210709 10:00:40.197"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:40.419" level="INFO">${text} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:40.197" endtime="20210709 10:00:40.419"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:40.419" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:40.419" endtime="20210709 10:00:40.420"></status>
+</kw>
+<msg timestamp="20210709 10:00:40.420" level="INFO">${text} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:39.936" endtime="20210709 10:00:40.420"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${text}' == '${text_value}'</arg>
+<arg>${true}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:40.420" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:40.420" endtime="20210709 10:00:40.420"></status>
+</kw>
+<msg timestamp="20210709 10:00:40.420" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 10:00:39.935" endtime="20210709 10:00:40.420"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result}==${true}</arg>
+<arg>common_keywords.Click Element</arg>
+<arg>${product_add_cart_btn}</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Fail</arg>
+<arg>Not same the expected product, refused!</arg>
+</arguments>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${product_add_cart_btn}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:40.422" endtime="20210709 10:00:40.694"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:40.696" level="INFO">Clicking element 'css:div[class='ProductSummary__StickyBarView-ccTufv bHNIjO'] * button'.</msg>
+<status status="PASS" starttime="20210709 10:00:40.695" endtime="20210709 10:00:41.029"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:40.421" endtime="20210709 10:00:41.029"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:40.421" endtime="20210709 10:00:41.029"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:39.933" endtime="20210709 10:00:41.029"></status>
+</kw>
+<msg timestamp="20210709 10:00:41.029" level="INFO">${product_2} = TV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:01.359" endtime="20210709 10:00:41.029"></status>
+</kw>
+<kw name="Click to shopping cart" library="common_keywords">
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20210709 10:00:46.031" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20210709 10:00:41.030" endtime="20210709 10:00:46.031"></status>
+</kw>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${shopping_cart_number}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:46.033" endtime="20210709 10:00:46.443"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:46.692" level="INFO">${text} = 2</msg>
+<status status="PASS" starttime="20210709 10:00:46.443" endtime="20210709 10:00:46.692"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:46.693" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:46.693" endtime="20210709 10:00:46.693"></status>
+</kw>
+<msg timestamp="20210709 10:00:46.694" level="INFO">${text} = 2</msg>
+<status status="PASS" starttime="20210709 10:00:46.032" endtime="20210709 10:00:46.694"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Number of product right now in shopping cart is ${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:46.695" level="INFO">Number of product right now in shopping cart is 2</msg>
+<status status="PASS" starttime="20210709 10:00:46.695" endtime="20210709 10:00:46.696"></status>
+</kw>
+<kw name="Click Element" library="common_keywords">
+<arguments>
+<arg>${shopping_cart_icon}</arg>
+</arguments>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:46.697" endtime="20210709 10:00:46.977"></status>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<doc>Click the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:46.978" level="INFO">Clicking element 'css:div[class='MainHeader__MiniCartContainer-cOzool KbPez'] a[id=btn-openMiniCart]'.</msg>
+<status status="PASS" starttime="20210709 10:00:46.977" endtime="20210709 10:00:48.126"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:46.696" endtime="20210709 10:00:48.127"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:41.030" endtime="20210709 10:00:48.127"></status>
+</kw>
+<kw name="Check product is existed on cart" library="cart_page">
+<arguments>
+<arg>${product_1}</arg>
+</arguments>
+<assign>
+<var>${check_point1}</var>
+</assign>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${product_name_tag}</arg>
+<arg>prd_name=${product_name}</arg>
+</arguments>
+<assign>
+<var>${name_locator}</var>
+</assign>
+<msg timestamp="20210709 10:00:48.128" level="INFO">${name_locator} = css:[class='CartItems__CartItemsContainer-jDoZuM gtvBSj'] [data-product-name = 'TV UHD LED (55", 4K, Smart) 4T-C55CJ2X'] [class='MultipleLineClamp__ProductCutoffDot-jCGKBO fMOIos']</msg>
+<status status="PASS" starttime="20210709 10:00:48.127" endtime="20210709 10:00:48.128"></status>
+</kw>
+<kw name="Get text and search value" library="common_keywords">
+<arguments>
+<arg>${name_locator}</arg>
+<arg>${product_name}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:48.128" endtime="20210709 10:00:50.522"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:50.779" level="INFO">${text} = SHARPTV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 10:00:50.522" endtime="20210709 10:00:50.779"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:50.780" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:50.780" endtime="20210709 10:00:50.781"></status>
+</kw>
+<msg timestamp="20210709 10:00:50.781" level="INFO">${text} = SHARPTV UHD LED (55", 4K, Smart) 4T-C55CJ2X</msg>
+<status status="PASS" starttime="20210709 10:00:48.128" endtime="20210709 10:00:50.781"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>BuiltIn.Should Contain</arg>
+<arg>${text}</arg>
+<arg>${text_value}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>${text_value}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:50.783" endtime="20210709 10:00:50.783"></status>
+</kw>
+<msg timestamp="20210709 10:00:50.784" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20210709 10:00:50.782" endtime="20210709 10:00:50.784"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:50.785" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:50.784" endtime="20210709 10:00:50.785"></status>
+</kw>
+<msg timestamp="20210709 10:00:50.785" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 10:00:48.128" endtime="20210709 10:00:50.786"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result}==${true}</arg>
+<arg>Set Variable</arg>
+<arg>${true}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>${false}</arg>
+</arguments>
+<assign>
+<var>${bool}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${true}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:50.787" endtime="20210709 10:00:50.788"></status>
+</kw>
+<msg timestamp="20210709 10:00:50.788" level="INFO">${bool} = True</msg>
+<status status="PASS" starttime="20210709 10:00:50.786" endtime="20210709 10:00:50.788"></status>
+</kw>
+<msg timestamp="20210709 10:00:50.789" level="INFO">${check_point1} = True</msg>
+<status status="PASS" starttime="20210709 10:00:48.127" endtime="20210709 10:00:50.789"></status>
+</kw>
+<kw name="Check product is existed on cart" library="cart_page">
+<arguments>
+<arg>${product_2}</arg>
+</arguments>
+<assign>
+<var>${check_point2}</var>
+</assign>
+<kw name="Format String" library="String">
+<doc>Formats a ``template`` using the given ``positional`` and ``named`` arguments.</doc>
+<arguments>
+<arg>${product_name_tag}</arg>
+<arg>prd_name=${product_name}</arg>
+</arguments>
+<assign>
+<var>${name_locator}</var>
+</assign>
+<msg timestamp="20210709 10:00:50.792" level="INFO">${name_locator} = css:[class='CartItems__CartItemsContainer-jDoZuM gtvBSj'] [data-product-name = 'TV FHD LED (42") 2T-C42BD1X'] [class='MultipleLineClamp__ProductCutoffDot-jCGKBO fMOIos']</msg>
+<status status="PASS" starttime="20210709 10:00:50.791" endtime="20210709 10:00:50.793"></status>
+</kw>
+<kw name="Get text and search value" library="common_keywords">
+<arguments>
+<arg>${name_locator}</arg>
+<arg>${product_name}</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Get Text Element" library="common_keywords">
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<doc>Waits until the element ``locator`` is visible.</doc>
+<arguments>
+<arg>${locator}</arg>
+<arg>timeout=${timeout}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:50.796" endtime="20210709 10:00:51.053"></status>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<arguments>
+<arg>${locator}</arg>
+</arguments>
+<assign>
+<var>${text}</var>
+</assign>
+<msg timestamp="20210709 10:00:51.307" level="INFO">${text} = SHARPTV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:51.053" endtime="20210709 10:00:51.308"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${text}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:51.308" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:51.308" endtime="20210709 10:00:51.309"></status>
+</kw>
+<msg timestamp="20210709 10:00:51.309" level="INFO">${text} = SHARPTV FHD LED (42") 2T-C42BD1X</msg>
+<status status="PASS" starttime="20210709 10:00:50.795" endtime="20210709 10:00:51.310"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>BuiltIn.Should Contain</arg>
+<arg>${text}</arg>
+<arg>${text_value}</arg>
+</arguments>
+<assign>
+<var>${status}</var>
+</assign>
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${text}</arg>
+<arg>${text_value}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:51.311" endtime="20210709 10:00:51.311"></status>
+</kw>
+<msg timestamp="20210709 10:00:51.312" level="INFO">${status} = True</msg>
+<status status="PASS" starttime="20210709 10:00:51.310" endtime="20210709 10:00:51.312"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>${status}</arg>
+</arguments>
+<msg timestamp="20210709 10:00:51.313" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20210709 10:00:51.312" endtime="20210709 10:00:51.313"></status>
+</kw>
+<msg timestamp="20210709 10:00:51.314" level="INFO">${result} = True</msg>
+<status status="PASS" starttime="20210709 10:00:50.793" endtime="20210709 10:00:51.314"></status>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${result}==${true}</arg>
+<arg>Set Variable</arg>
+<arg>${true}</arg>
+<arg>ELSE</arg>
+<arg>Set Variable</arg>
+<arg>${false}</arg>
+</arguments>
+<assign>
+<var>${bool}</var>
+</assign>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${true}</arg>
+</arguments>
+<status status="PASS" starttime="20210709 10:00:51.315" endtime="20210709 10:00:51.316"></status>
+</kw>
+<msg timestamp="20210709 10:00:51.316" level="INFO">${bool} = True</msg>
+<status status="PASS" starttime="20210709 10:00:51.314" endtime="20210709 10:00:51.316"></status>
+</kw>
+<msg timestamp="20210709 10:00:51.317" level="INFO">${check_point2} = True</msg>
+<status status="PASS" starttime="20210709 10:00:50.790" endtime="20210709 10:00:51.317"></status>
+</kw>
+<kw name="Compare and assert final result" library="common_keywords">
+<arguments>
+<arg>${check_point1}</arg>
+<arg>${check_point2}</arg>
+</arguments>
+<kw name="Run Keyword If" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<arguments>
+<arg>${rs1}==${true} and ${rs2}==${true}</arg>
+<arg>BuiltIn.Log</arg>
+<arg>Pass. Test case finish with no issue.</arg>
+<arg>ELSE</arg>
+<arg>BuiltIn.Fail</arg>
+<arg>Fail. Some product not available on shopping cart!</arg>
+</arguments>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>Pass. Test case finish with no issue.</arg>
+</arguments>
+<msg timestamp="20210709 10:00:51.321" level="INFO">Pass. Test case finish with no issue.</msg>
+<status status="PASS" starttime="20210709 10:00:51.321" endtime="20210709 10:00:51.322"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:51.319" endtime="20210709 10:00:51.322"></status>
+</kw>
+<status status="PASS" starttime="20210709 10:00:51.318" endtime="20210709 10:00:51.322"></status>
+</kw>
+<tags>
+<tag>search TV</tag>
+<tag>web</tag>
+</tags>
+<status status="PASS" starttime="20210709 09:58:29.173" endtime="20210709 10:00:51.323" critical="yes"></status>
+</test>
+<kw name="Close All Browsers" library="SeleniumLibrary" type="teardown">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20210709 10:00:51.326" endtime="20210709 10:00:51.485"></status>
+</kw>
+<status status="PASS" starttime="20210709 09:58:28.925" endtime="20210709 10:00:51.485"></status>
+</suite>
+<status status="PASS" starttime="20210709 09:58:28.910" endtime="20210709 10:00:51.486"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">search TV</stat>
+<stat pass="1" fail="0">web</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Testcases">Testcases</stat>
+<stat pass="1" fail="0" id="s1-s1" name="Add Product And Check">Testcases.Add Product And Check</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
